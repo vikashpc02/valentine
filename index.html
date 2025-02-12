@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Valentine's Excuse Generator 💔😂</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background-color: pink; }
+        .excuse { font-size: 24px; color: red; font-weight: bold; margin-top: 20px; }
+        button { padding: 10px 20px; font-size: 18px; background-color: red; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>💔 Need an Excuse to Skip Valentine's Day? 💔</h1>
+    <button onclick="getExcuse()">Generate Excuse</button>
+    <p id="excuse" class="excuse">😂 Click the button for a hilarious excuse!</p>
+    
+    <script>
+        async function getExcuse() {
+            try {
+                let response = await fetch("http://51.120.11.132/");
+                let data = await response.json();
+                document.getElementById("excuse").innerText = data.excuse;
+            } catch (error) {
+                document.getElementById("excuse").innerText = "💔 Error! No excuse available!";
+            }
+        }
+    </script>
+</body>
+</html>
